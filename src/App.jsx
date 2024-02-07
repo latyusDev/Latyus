@@ -7,15 +7,17 @@ import SignIn from './components/Auth/SignIn';
 import Cart from './components/user/cart/Cart';
 import Home from './pages/Home';
 import Dashboard from './components/admin/Dashboard';
+import Sidebar from './components/sidebar/Sidebar';
 // import Navbar from './components/Navbar';
 
 function App() {
+  const [isOpen,setIsOpen] = useState(false)
 
-  
   return (
       <BrowserRouter>
-            <Header/>
-
+            <Header isOpen={isOpen}  setIsOpen={setIsOpen} />
+            <Sidebar isOpen={isOpen}  setIsOpen={setIsOpen}/>
+            
                 <Routes>
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/' element={<Home />} />

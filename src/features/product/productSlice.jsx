@@ -4,7 +4,10 @@ import { useSelector } from "react-redux";
 import axiosClient from "../../api/axios";
 
 const initialState = {
-    products:[]
+    products:[],
+    randomProducts:[],
+    newProducts:[],
+    isLoading:false
 }
 
 export const createProduct = createAsyncThunk('create', async(payload)=>{
@@ -22,6 +25,13 @@ export const getProduct = createAsyncThunk('getProduct', async()=>{
        
 })
 
+
+export const getRandomProducts = createAsyncThunk('getRandomProducts', async()=>{
+    const {data} =  await axiosClient.get('/products/random')
+       return data;
+       
+})
+
 const productSlice = createSlice({
     name:'products',
     initialState,
@@ -32,16 +42,21 @@ const productSlice = createSlice({
             .addCase(createProduct.fulfilled, (state,action)=>{
                 // console.log(action)
                 state.products = action.payload
-                })
-
+            })
             .addCase(getProduct.fulfilled, (state,action)=>{
-           
                 state.products = action.payload
-                // console.log(action.payload)
-
-        })
+            })
+            .addCase(getRandomProducts.fulfilled, (state,action)=>{
+                state.randomProducts = action.payload
+            })
+            .addCase(getRandomProducts.pending, (state,action)=>{
+                state.randomProducts = [];
+                state.isLoading = true
+            })
+            
     }
 })
 
 export const allProducts = (state)=>state.products.products
+export const randomProducts = (state)=>state.products.randomProducts;
 export default productSlice.reducer;

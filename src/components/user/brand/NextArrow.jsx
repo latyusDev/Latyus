@@ -1,10 +1,11 @@
 import { GrFormNext } from "react-icons/gr";
 
 export default function NextArrow(props) {
-    const { className, style, onClick } = props;
+    const { className, style,color,height, onClick } = props;
+    console.log(style)
     return (
       <GrFormNext  className={className}
-      style={{ ...style, display: "block" }}
+      style={{...style,color,height}}
       onClick={onClick}/>
     );
   }

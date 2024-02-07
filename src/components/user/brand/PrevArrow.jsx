@@ -1,10 +1,11 @@
 import { GrFormPrevious } from "react-icons/gr";
 
 export default function PrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { className, style,color,height, onClick } = props;
+
     return (
       <GrFormPrevious  className={className}
-      style={{ ...style, display: "block" }}
+      style={{...style,color,height}}
       onClick={onClick}/>
     );
   }

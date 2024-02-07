@@ -13,7 +13,7 @@ const Brand = ({phoneCategory})=>{
           {
                 <div>
                     <div className="flex justify-between mt-7">
-                            <h3 className="   font-['Lato',sans-serif] font-[6l00] text-3xl capitalize">{phoneCategory[0].name}</h3>
+                            <h3 className=" text-[#BB0000]  font-['Lato',sans-serif] font-[6l00] text-3xl capitalize">{phoneCategory[0].name}</h3>
                             <BrandButtons phoneBrand={phoneCategory[0].brands}
                                  setBrand={setBrand} brand={brand}/>
                             

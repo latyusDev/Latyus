@@ -19,6 +19,7 @@ const Brand = ({phoneCategory})=>{
                             
                     </div>
                     {        
+
                         phoneCategory[0].brands[brand].products.length > 0 ? 
                         <BrandCard
                         products={phoneCategory[0].brands[brand].products}/>:

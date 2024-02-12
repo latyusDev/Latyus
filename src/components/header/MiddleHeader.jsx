@@ -4,6 +4,7 @@ import { BsFillCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { amount, cartProducts, getTotal, total } from "../../features/cart/cartSlice";
+import Logo from "../Logo";
 
 
 
@@ -16,8 +17,7 @@ const MiddleHeader = ()=>{
     },[cartItems])
     return (
         <div className="flex justify-between  items-center py-2 px-6 border-y-[1px] border-[#D7504E]">
-            <h1 className="text-[#FAF5F5] text-[3.5rem] uppercase font-['Rubik_Doodle_Triangles',system-ui]">latyus</h1>
-
+            <Logo/>
             <div className="basis-[50%]">
                 <form className="flex font-['Lato',sans-serif] ">
                     <input type="text" className=" pl-4 basis-[80%] h-[50px] rounded-l-[3rem] outline-[0]" placeholder="Search the entire store"/>

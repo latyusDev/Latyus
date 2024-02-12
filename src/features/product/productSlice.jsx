@@ -7,7 +7,7 @@ const initialState = {
     products:[],
     randomProducts:[],
     newProducts:[],
-    isLoading:false
+    status:'pending'
 }
 
 export const createProduct = createAsyncThunk('create', async(payload)=>{
@@ -28,8 +28,12 @@ export const getProduct = createAsyncThunk('getProduct', async()=>{
 
 export const getRandomProducts = createAsyncThunk('getRandomProducts', async()=>{
     const {data} =  await axiosClient.get('/products/random')
-       return data;
-       
+       return data;   
+})
+
+export const  getNewProducts = createAsyncThunk('newProducts', async()=>{
+    const {data} =  await axiosClient.get('/categoryLatestProducts')
+       return data;   
 })
 
 const productSlice = createSlice({
@@ -48,15 +52,26 @@ const productSlice = createSlice({
             })
             .addCase(getRandomProducts.fulfilled, (state,action)=>{
                 state.randomProducts = action.payload
+                state.status = 'success'
+
             })
             .addCase(getRandomProducts.pending, (state,action)=>{
-                state.randomProducts = [];
-                state.isLoading = true
+                state.status = 'pending'
+
+            })
+            .addCase(getNewProducts.fulfilled, (state,action)=>{
+                state.newProducts = action.payload
+                state.status = 'success'
+
+            })
+            .addCase(getNewProducts.pending, (state,action)=>{
+                state.status = 'pending'
             })
             
     }
 })
 
 export const allProducts = (state)=>state.products.products
+export const latestProducts = (state)=>state.products.newProducts
 export const randomProducts = (state)=>state.products.randomProducts;
 export default productSlice.reducer;

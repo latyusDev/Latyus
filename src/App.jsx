@@ -8,6 +8,7 @@ import Cart from './components/user/cart/Cart';
 import Home from './pages/Home';
 import Dashboard from './components/admin/Dashboard';
 import Sidebar from './components/sidebar/Sidebar';
+import Footer from './footer/Footer';
 // import Navbar from './components/Navbar';
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
                 <Route path='/category/:name' element={<Category/>} />
                 
                 </Routes>
+            <Footer />
+
       </BrowserRouter>
   )
 }

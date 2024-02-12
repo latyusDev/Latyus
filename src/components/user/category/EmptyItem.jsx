@@ -1,9 +1,9 @@
 import React from "react";
 
 
-const EmptyItem = ({message})=>{
+const EmptyItem = ({message,styles})=>{
     return (
-        <h1 className="text-[#880000] text-4xl text-center font-['Lato',sans-serif] mt-[8rem]">{message}</h1>
+        <h1 className={styles}>{message}</h1>
     )
 }
 

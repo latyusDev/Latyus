@@ -26,6 +26,8 @@ const Category = ()=>{
         fetchCategory();
     },[])
 
+    console.log(categories)
+
     if(categories.length === 0){
         return (
             <div className="mx-auto mt-[19rem] w-[max-content]">
@@ -43,18 +45,22 @@ const Category = ()=>{
     }
     
     return (
-        <section className="px-3">  
+        <section className="phx-3">  
             <h1 className="text-center text-[4rem] capitalize text-[#BB0000] 
              mt-8 font-['Rubik_Doodle_Triangles',system-ui]">{name}</h1>
             <div className="flex justify-between mt-7">
                 <h3 className="text-3xl">Select a brand</h3>
                 <BrandButton singleCategory={singleCategory} setBrand={setBrand} brand={brand}/>
             </div>
+            <div className="flex flex-wrap justify-center gap-6 mt-[3rem]">
            {
            singleCategory[0].brands[brand].products.length > 0 ?
-            <CategoryCard products={singleCategory[0].brands[brand].products}/>:
-             <EmptyItem message="No Product for this brand"/>
-            }
+           singleCategory[0].brands[brand].products.map(product=>{
+              return <CategoryCard product={product} key={product.id}/>
+           }):
+           <EmptyItem message="No Product for this brand"/>
+        }
+        </div>
         </section>
     )
 }

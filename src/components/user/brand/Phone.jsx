@@ -20,15 +20,12 @@ const Phone = ()=>{
     },[])
 
     const phoneCategory = categoryByName('phone',homeItems)
-    
-    // console.log(homeItems,'here')
-    console.log(phoneCategory,'here')
    
     return (
         <section className="px-3"> 
       
         {
-           phoneCategory.length >0&& phoneCategory[0].brands.length>0?
+           phoneCategory.length >0?
             <Brand phoneCategory={phoneCategory} />
              :<div className="mx-auto mt-[19rem] w-[max-content]">
             <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",

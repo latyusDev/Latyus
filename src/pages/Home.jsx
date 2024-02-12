@@ -10,6 +10,8 @@ import Phone from "../components/user/brand/Phone";
 import Laptop from "../components/user/brand/Laptop"
 
 import DynamicCarousel from "../components/user/home/dynamicCarousel/DynamicCarousel";
+import NewArrival from "../components/user/home/newArrival/NewArrival";
+import Heading from "../components/heading";
 const Home = ()=>{
     
     return (
@@ -70,10 +72,10 @@ const Home = ()=>{
 
             </div>
           
-
             <div className="px-6 mt-9">
                        <Phone/>
                        <Laptop/>
+                       <NewArrival/>
            </div>
             
         </section>

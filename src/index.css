@@ -2,9 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.container{
-    height:600px;
-    width: 100%;
-    /* background-image:linear-gradient(red,blue); */
-    /* background-color: #3c3c3cb3; */
-}

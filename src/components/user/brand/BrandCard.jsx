@@ -9,9 +9,9 @@ import { addToCart } from "../../../features/cart/cartSlice";
 
 const BrandCard = ({products,brand})=>{
     const dispatch = useDispatch()
-    
     return(
                 <Slider {...settings}>
+               
             {products.slice(0,15).map(product=>{
                return (
                    <div  className="carousel rounded-sm mt-5 p-4 font-['Lato',sans-serif] border-[1px] border-[#E2E2E2] 

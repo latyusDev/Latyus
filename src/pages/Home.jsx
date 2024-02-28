@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
-import DropDown from '../components/sidebar/CategoryItems'
+import DropDown from '../components/user/category/CategoryItems'
 import { CiDeliveryTruck } from "react-icons/ci";
 import { MdPayment } from "react-icons/md";
 import { FaShopify } from "react-icons/fa";
 import { LuHelpingHand } from "react-icons/lu";
 import { GiThreeFriends } from "react-icons/gi";
-import { useDispatch, useSelector } from "react-redux";
 import Phone from "../components/user/brand/Phone";
 import Laptop from "../components/user/brand/Laptop"
-
 import DynamicCarousel from "../components/user/home/dynamicCarousel/DynamicCarousel";
 import NewArrival from "../components/user/home/newArrival/NewArrival";
+import Television from "../components/user/brand/Television";
 import Heading from "../components/heading";
+import Iron from "../components/user/brand/Iron";
+
+
+
 const Home = ()=>{
-    
     return (
         <section className="  ">
-         
+            
+            
             <DynamicCarousel/>
 
             <div className="flex justify-between gajp-4 mt-5 border-b-[3px] border-[#BB0000] p-6">
@@ -75,6 +78,11 @@ const Home = ()=>{
             <div className="px-6 mt-9">
                        <Phone/>
                        <Laptop/>
+                       <Heading text="electronics" styles=" text-[#BB0000] mt-[6rem] mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
+                        text-center uppercase text-6xl capitalize"/>
+                    <Television/>
+                    <Iron/>
+
                        <NewArrival/>
            </div>
             

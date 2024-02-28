@@ -37,19 +37,19 @@ const categorySlice = createSlice({
             .addCase(createCategory.fulfilled, (state,action)=>{
                 state.category = action.payload.category
             })
-            .addCase(getCategory.pending,(state,action)=>{
-                state.status = 'loading'
-            })
             .addCase(getCategory.fulfilled, (state,action)=>{
                 state.category = action.payload
-                state.status = 'succeeded'
+                state.status = 'success'
+            })
+            .addCase(getCategory.pending,(state,action)=>{
+                state.status = ' pending';
             })
             .addCase(getHomeCategory.fulfilled, (state,action)=>{
                 state.homeCategory = action.payload
-                state.status = 'succeeded'
+                state.status = 'success'
             })
             .addCase(getHomeCategory.pending,(state,action)=>{
-                state.status = 'loading'
+                state.status = 'pending'
             })
     }
 })

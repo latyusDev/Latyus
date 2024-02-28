@@ -7,7 +7,7 @@ import Loader from "../../Loader";
 import { Circles } from "react-loader-spinner";
 
 
-const Laptop = ()=>{
+const Television = ()=>{
     const dispatch = useDispatch()
     const homeItems = useSelector(homeCategories)
     const getHomeProducts = async()=>{
@@ -21,14 +21,13 @@ const Laptop = ()=>{
         getHomeProducts()
     },[])
 
-    const laptopCategory = categoryByName('laptop',homeItems)
-  
+    const phoneCategory = categoryByName('television',homeItems)
     return (
         <section className="px-3">  
           
           {
-           laptopCategory.length >0&& laptopCategory[0].brands.length>0?
-            <Brand phoneCategory={laptopCategory} />
+           phoneCategory.length >0&& phoneCategory[0].brands.length>0?
+            <Brand phoneCategory={phoneCategory} />
              :<div className="mx-auto mt-[19rem] w-[max-content]">
             <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
             width:"300px" ,height:"300px"}} />
@@ -38,4 +37,4 @@ const Laptop = ()=>{
     )
 }
 
-export default Laptop;
+export default Television;

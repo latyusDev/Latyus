@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { allCategories, getCategory } from "../../features/category/categorySlice";
+import { allCategories, getCategory } from "../../../features/category/categorySlice";
+import { setOpenDropDown } from "../../../features/appState/appStateSlice";
 
-const CategoryItems = ({isOpen,setIsOpen})=>{
+const CategoryItems = ()=>{
     const categories = useSelector(allCategories)
     const dispatch = useDispatch()
 
@@ -20,11 +21,12 @@ const CategoryItems = ({isOpen,setIsOpen})=>{
     },[])
 
         return (
-            <div className="absolute left-[0px] bottom-[0px] bg-yellow-800 top-[0] w-[350px]">
-                <ul className="bg-white w-full h-full text-[#707070] pb-[1rem] px-5 font-['Lato',sans-serif] ">
+            <div className=" bg-gradient-to-l  from-[#BB0000]  to-[#880000] w-full">
+                <ul className="  grid grid-cols-[repeat(4,minmax(100px,auto))] justify-center gap-10 text-[#707070] pb-[1rem] px-5 font-['Lato',sans-serif] ">
+                  
                     {categories.length > 0 && categories.map(category=>{
                         return (
-                            <li key={category.id} className="py-3 border-b-[1px] border-[#ccc]"><Link to={`category/${category.name}`}>{category.name} </Link></li>
+                            <li key={category.id} onClick={()=>dispatch(setOpenDropDown())}  className="font-[600] py-3 text-white"><Link to={`category/${category.name}`}>{category.name} </Link></li>
                         )
                     })}
                   

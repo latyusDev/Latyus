@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { signIn } from "../../features/user/authSlice";
+import { signIn, status } from "../../features/user/authSlice";
+import Loader from "../Loader";
+import { Circles } from "react-loader-spinner";
 const SignIn = ()=>{
     const [user,setUser] = useState({email:'',password:''});                
-
+    const signInStatus = useSelector(status)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const handleChange = (e)=>{
         const name = e.target.name;
         const value = e.target.value ;
         setUser({...user,[name]: value})
-        console.log(user)
 
     }
 
@@ -26,8 +27,15 @@ const SignIn = ()=>{
         }
 
     }
+    if(signInStatus === 'pending'){
+        return <div className="mx-auto mt-[19rem] w-[max-content]">
+        <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
+        width:"300px" ,height:"300px"}} />
+   </div>
+    }
+    
     return (
-        <section className="bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
+        <section className=" border [#FCFCFC] pb-36 bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
             <h1 className="text-center text-[#BB0000]  text-[4rem] font-['Rubik_Doodle_Triangles',system-ui] font-[400]">Sign in</h1>
             <form onSubmit={handleSignIn} className="max-w-[500px] mx-auto  mt-[4rem]">
               
@@ -42,7 +50,7 @@ const SignIn = ()=>{
                      onChange={handleChange} value={user.password} type="password" name="password"/>
                 </div>
         
-                <button type="submit" className="bg-[#880000] w-full py-3 mt-8 rounded-md text-white">Sign in</button>
+                <button type="submit" className="bg-[#880000] w-full py-3 mt-8 rounded-md border-[2px] border-[#880000] text-white transition-all hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000]">Sign in</button>
         </form>
     <p className="text-center my-6">Don't have an account <Link to="/register" className="text-[#880000]">Sign up</Link></p>     
         </section>

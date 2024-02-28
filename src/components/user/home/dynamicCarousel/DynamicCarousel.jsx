@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRandomProducts, randomProducts } from '../../../../features/product/productSlice';
 import { useEffect, useState } from 'react';
 import { addToCart } from '../../../../features/cart/cartSlice';
+import AddToCart from '../../AddToCart';
+import { Circles } from 'react-loader-spinner';
+import Loader from '../../../../components/Loader'
+import { Link } from 'react-router-dom';
 
 const DynamicCarousel = ()=>{
     const dispatch = useDispatch();
@@ -20,12 +24,17 @@ const DynamicCarousel = ()=>{
     }
     useEffect(()=>{
         getDynamicProducts();
-    },[])
+    },[]);
+
     if(dynamicProducts.length == 0){
-        return 'loading'
+        return <div className="mx-auto my-[9rem] w-[max-content]">
+        <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
+        width:"300px" ,height:"300px"}} />
+        </div>
     }
+
     return(
-        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 h-[600px] w-full">
+        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 h-[600px] w-full relaive -z-20">
              <Slider {...settings}>
                 {
                     dynamicProducts.map((product,index)=>{
@@ -34,11 +43,16 @@ const DynamicCarousel = ()=>{
                             <div className='mb-8' key={id}>
                             <div className={`flex justify-center gap-10 items-center  ${index%2===0&&"flex-row-reverse"}`}>
                                        <div className="basis-[40%] text-white font-['Lato',sans-serif]">
+                                          
                                            <h1 className=" text-3xl mb-4 capitalize">{name}</h1>
                                            <p className="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla corporis, dolor 
-                                               iure delectus similique fugiat et eligendi culpa. Quia, iste. <span className="capitalize text-[#FF9300]">learn more</span> </p>
-                                               <button  onClick={()=>dispatch(addToCart(product))}
-                                                className=" capitalize mt-4 px-6 py-2  rounded-sm border-[1px] border-[#FF9300] text-white">add to cart</button>
+                                               iure delectus similique fugiat et eligendi culpa. Quia, iste. <Link to={`product/${product.id}`}> <span className="transition-all duration-1000  capitalize text-[#FF9300] 
+                                               hover:cursor-pointer hover:text-white  hover:border-white">
+                                                learn more</span></Link> </p>
+                                                <AddToCart product={product} styles="transition-all duration-1000  capitalize mt-4 px-6 py-2
+                                                  rounded-sm border-[1px] border-[white] text-white hover:text-[#FF9300]
+                                                    hover:border-[#FF9300]"/>
+
                                        </div>
                                        <div className="basis-[40%] ">
                                        <img src={image} alt="" className="w-full h-[400px]" />

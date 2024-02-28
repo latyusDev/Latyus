@@ -1,12 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axiosClient from "../../api/axios";
+import Cookies from "js-cookie";
 
 const initialState = {
-    cart:localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')): {
+        cart:localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')): {
         cartProducts:[],
         total:0,
         amount:0
-    }
+    },
+    status:'idle'
 }
+
+export const checkout = createAsyncThunk('cart/checkout',async(payload)=>{
+            const response = await axiosClient.post('/checkout',payload,{
+                     headers:{
+                         'Content-Type':'Application/json',
+                         Authorization:`Bearer ${Cookies.get('ACCESS_TOKEN')}`
+                     }
+                 })
+             return response.data;
+})
 
 const cartSlice = createSlice({
     name:'cart',
@@ -25,14 +38,14 @@ const cartSlice = createSlice({
                 localStorage.setItem('cart', JSON.stringify({...state.cart,cartProducts}))
             }
         },
-        removeOneFromCart:(state,action)=>{
+         decreaseItemQuantity:(state,action)=>{
            const cartProducts = state.cart.cartProducts.map(cartItem=> cartItem.id === action.payload ? {
                                      ...cartItem, count:cartItem.count-1
                                 }:cartItem).filter(cartItem=>cartItem.count !==0)
                    state.cart = {...state.cart,cartProducts}
                    localStorage.setItem('cart', JSON.stringify({...state.cart,cartProducts}))
         },
-        removeFromCart:(state,action)=>{
+        removeOneFromCart:(state,action)=>{
             const cartProducts = state.cart.cartProducts.filter(cartItem=> cartItem.id !== action.payload)
             state.cart = {...state.cart,cartProducts}
             localStorage.setItem('cart', JSON.stringify({...state.cart,cartProducts}))
@@ -52,11 +65,21 @@ const cartSlice = createSlice({
             state.cart.total = total
             localStorage.setItem('cart', JSON.stringify({...state.cart,amount,total}))  
         }
+    },
+    extraReducers(builder){
+            builder
+                .addCase(checkout.fulfilled,(state,action)=>{
+                        state.status = 'success';
+                })
+                .addCase(checkout.pending,(state,action)=>{
+                        state.status = 'pending';
+                })
     }
 })
+
 
 export const cartProducts = (state)=>state.cart.cart.cartProducts;
 export const total = (state)=>state.cart.cart.total;
 export const amount = (state)=>state.cart.cart.amount;
-export const {addToCart,removeFromCart,removeOneFromCart,clearCart,getTotal} = cartSlice.actions;
+export const {addToCart,decreaseItemQuantity,removeOneFromCart,clearCart,getTotal} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -16,18 +16,16 @@ const NewArrival = ()=>{
     const getLatestProducts = async()=>{
         try{
             await dispatch(getNewProducts()).unwrap();
-            // setNewArrival(newProducts)
         }catch(e){
             console.log(e)
         }
     }
-    console.log(newArrival)
     useEffect(()=>{
         getLatestProducts();
     },[])
 
     return(
-        <section>
+        <section className="mb-36">
             {
                 newArrival.length>0 ? <div>
                 <Heading text="new arrivals" styles=" text-[#BB0000] mt-[6rem] mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
@@ -41,13 +39,15 @@ const NewArrival = ()=>{
             <div className="flex flex-wrap justify-center gap-6 mt-[3rem]">
                     {
                         newArrival[brand].products.slice(0,10).map(product=>{
-                           return <CategoryCard product={product}/>
+                           return <CategoryCard product={product} key={product.id}/>
                         })
                     }
             </div> 
         </div> 
-                    :<Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
-                        width:"300px" ,height:"300px"}} />
+                    :<div className="mx-auto mt-[19rem] w-[max-content]">
+                    <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
+                    width:"300px" ,height:"300px"}} />
+                    </div>
                     }
         </section>
     )

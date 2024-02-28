@@ -5,11 +5,12 @@ import { Circles } from "react-loader-spinner";
 import Loader from "../../Loader";
 import BrandButton from "./BrandButtons";
 import CategoryCard from "./CategoryCard";
-import EmptyItem from "./EmptyItem";
+import EmptyItem from "../EmptyItem";
 import { allCategories, getCategory } from "../../../features/category/categorySlice";
 
 const Category = ()=>{
     const categories = useSelector(allCategories)
+
     const [brand, setBrand] = useState(0)
     const dispatch = useDispatch()
     const {name} = useParams();
@@ -26,7 +27,6 @@ const Category = ()=>{
         fetchCategory();
     },[])
 
-    console.log(categories)
 
     if(categories.length === 0){
         return (
@@ -45,12 +45,12 @@ const Category = ()=>{
     }
     
     return (
-        <section className="phx-3">  
+        <section className="px-6 mb-36">  
             <h1 className="text-center text-[4rem] capitalize text-[#BB0000] 
              mt-8 font-['Rubik_Doodle_Triangles',system-ui]">{name}</h1>
             <div className="flex justify-between mt-7">
                 <h3 className="text-3xl">Select a brand</h3>
-                <BrandButton singleCategory={singleCategory} setBrand={setBrand} brand={brand}/>
+                <BrandButton  singleCategory={singleCategory} setBrand={setBrand} brand={brand}/>
             </div>
             <div className="flex flex-wrap justify-center gap-6 mt-[3rem]">
            {

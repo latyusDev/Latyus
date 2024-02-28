@@ -1,9 +1,10 @@
 import React from "react"
-import CategoryItems from "./CategoryItems";
+import CategoryItems from "../user/category/CategoryItems";
 
 const Sidebar = ({isOpen,setIsOpen})=>{
     return(
-       <aside onClick={()=>setIsOpen(!isOpen)}  className={`fixed top-0 bottom-0 overflow-x-hidden  ${isOpen?"w-full":"w-0"} z-[99999] bg-[#3c3c3c80]`}>
+       <aside onClick={()=>setIsOpen(!isOpen)} 
+        className={`fixed top-0 bottom-0  overflow-x-hidden transition-1 ${isOpen?"w-full":"w-0"} z-[999] bg-[#3c3c3c80]`}>
          <CategoryItems isOpen={isOpen} 
             setIsOpen={setIsOpen}/>
        </aside>

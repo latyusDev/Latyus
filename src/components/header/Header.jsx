@@ -3,14 +3,12 @@ import TopHeader from "./TopHeader";
 import MiddleHeader from "./MiddleHeader";
 import BottomHeader from "./BottomHeader";
 
-const Header = ({isOpen,setIsOpen})=>{
+const Header = ()=>{
     return (
-        <header className="  bg-gradient-to-l  from-[#BB0000]  to-[#880000] font-['Rubik_Doodle_Triangles',system-ui]">
+        <header className=" relative bg-gradient-to-l  from-[#BB0000]  to-[#880000] font-['Rubik_Doodle_Triangles',system-ui]">
             <TopHeader/>
             <MiddleHeader />
             <BottomHeader
-             isOpen={isOpen} 
-            setIsOpen={setIsOpen}
             />
         </header>
     )

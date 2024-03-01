@@ -22,11 +22,11 @@ const CategoryItems = ()=>{
 
         return (
             <div className=" bg-gradient-to-l  from-[#BB0000]  to-[#880000] w-full">
-                <ul className="  grid grid-cols-[repeat(4,minmax(100px,auto))] justify-center gap-10 text-[#707070] pb-[1rem] px-5 font-['Lato',sans-serif] ">
+                <ul className=" pt-4 flex gap-8 flex-wrap   gap-y-4 gap-x-10 text-[#707070] pb-[1rem] px-5 font-['Lato',sans-serif] ">
                   
                     {categories.length > 0 && categories.map(category=>{
                         return (
-                            <li key={category.id} onClick={()=>dispatch(setOpenDropDown())}  className="font-[600] py-3 text-white"><Link to={`category/${category.name}`}>{category.name} </Link></li>
+                            <li key={category.id} onClick={()=>dispatch(setOpenDropDown())}  className="capitalize transition-all duration-[s] font-[600]  text-white hover:text-[#FF9300]"><Link to={`category/${category.name}`}>{category.name} </Link></li>
                         )
                     })}
                   

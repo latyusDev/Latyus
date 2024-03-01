@@ -45,8 +45,7 @@ const DynamicCarousel = ()=>{
                                        <div className="basis-[40%] text-white font-['Lato',sans-serif]">
                                           
                                            <h1 className=" text-3xl mb-4 capitalize">{name}</h1>
-                                           <p className="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla corporis, dolor 
-                                               iure delectus similique fugiat et eligendi culpa. Quia, iste. <Link to={`product/${product.id}`}> <span className="transition-all duration-1000  capitalize text-[#FF9300] 
+                                           <p className="">{description.slice(0,200)}<Link to={`product/${product.id}`}> <span className="transition-all duration-1000  capitalize text-[#FF9300] 
                                                hover:cursor-pointer hover:text-white  hover:border-white">
                                                 learn more</span></Link> </p>
                                                 <AddToCart product={product} styles="transition-all duration-1000  capitalize mt-4 px-6 py-2
@@ -55,7 +54,7 @@ const DynamicCarousel = ()=>{
 
                                        </div>
                                        <div className="basis-[40%] ">
-                                       <img src={image} alt="" className="w-full h-[400px]" />
+                                       <img src={image} alt="" className="w-full h-[400px] object-containh" />
                                        </div>
                                    </div>
                             </div>

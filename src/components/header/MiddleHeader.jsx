@@ -23,7 +23,7 @@ const MiddleHeader = ()=>{
             <SearchInput isOpen={isOpen}/>
             <Link to='/cart'>
             <span className="text-5xl text-[#fff] relative">
-                <BsCart className=" hover:text-[#FF9300]"/>
+                <BsCart className="transition-all hover:text-[#FF9300]"/>
                 <small className="absolute top-[-15px] right-[-6px] bg-[#FF9300] rounded-[50%] px-1.5 py-0 font-['Lato',sans-serif] text-lg text-[#fff]">{cartAmount}</small>
              </span>
             </Link>

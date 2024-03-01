@@ -21,14 +21,14 @@ const Laptop = ()=>{
         getHomeProducts()
     },[])
 
-    const laptopCategory = categoryByName('laptop',homeItems)
+    const category = categoryByName('laptops',homeItems)
   
     return (
         <section className="px-3">  
           
           {
-           laptopCategory.length >0&& laptopCategory[0].brands.length>0?
-            <Brand phoneCategory={laptopCategory} />
+           category.length >0&& category[0].brands.length>0?
+            <Brand category={category} />
              :<div className="mx-auto mt-[19rem] w-[max-content]">
             <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
             width:"300px" ,height:"300px"}} />

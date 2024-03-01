@@ -9,7 +9,8 @@ import AddToCart from "../AddToCart";
 import { Link } from "react-router-dom";
 
 
-const BrandCard = ({products})=>{
+const BrandCard = ({category,brand})=>{
+    const products = category.brands.filter(brand=>brand.products.length>0)[brand].products
     return(
             <Slider {...settings}>
             

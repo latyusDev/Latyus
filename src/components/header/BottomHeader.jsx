@@ -9,7 +9,7 @@ import { Circles } from "react-loader-spinner";
 import Loader from "../Loader";
 import DropDown from "../user/DropDown";
 
-const BottomHeader = ()=>{
+const BottomHeader = ({pageY,headerHeight})=>{
     const dispatch = useDispatch();
     const openDropDown = useSelector((state)=>state.normalState.openDropDown);
     const categoryStatus = useSelector(allCategories);
@@ -17,7 +17,7 @@ const BottomHeader = ()=>{
     return (
 
         <nav>
-            <div className="flex items-center px-6 border-b-[1px] border-[#D7504E] font-['Lato',sans-serif] ">
+            <div className={`flex items-center px-6 border-b-[1px] border-[#D7504E] font-['Lato',sans-serif] ${pageY>headerHeight&&"hidden"}`}>
             <div className="border-r-[1px] border-[#D7504E]">
             <div  className="flex  gap-6 items-center py-4 pr-16 ">
                {
@@ -37,9 +37,9 @@ const BottomHeader = ()=>{
             </div>
             </div>
             <ul className="flex gap-8 capitalize text-[#FAFFF7]  font-[600] text-[0.8rem] pl-8">
-                <li><Link to="/" className="uppercase hover:text-[#FF9300]">Home  </Link></li>
-                <li><Link to="/"  className="uppercase hover:text-[#FF9300]">About us </Link></li>
-                <li><Link to="/"  className="uppercase hover:text-[#FF9300]">Contact </Link></li>
+                <li><Link to="/" className="uppercase transition-all hover:text-[#FF9300]">Home  </Link></li>
+                <li><Link to="/"  className="uppercase transition-all hover:text-[#FF9300]">About us </Link></li>
+                <li><Link to="/"  className="uppercase transition-all hover:text-[#FF9300]">Contact </Link></li>
             </ul>
 
         </div>

@@ -3,9 +3,9 @@ import BrandCard from './BrandCard'
 import BrandButtons from './BrandButtons'
 import EmptyItem from "../EmptyItem";
 
-const Brand = ({phoneCategory})=>{
+const Brand = ({category})=>{
     const [brand,setBrand] = useState(0);
- 
+    // const filterCategory = category.filter(categoryItem=>categoryItem.length>0)
     return (
         <section className="px-3">  
 
@@ -13,18 +13,17 @@ const Brand = ({phoneCategory})=>{
           {
                 <div>
                     <div className="flex justify-between mt-7">
-                            <h3 className=" text-[#BB0000]  font-['Lato',sans-serif] font-[6l00] text-3xl capitalize">{phoneCategory[0].name}</h3>
-                            <BrandButtons phoneBrand={phoneCategory[0].brands}
+                            <h3 className=" text-[#BB0000]  font-['Lato',sans-serif] font-[6l00] text-3xl capitalize">{category[0].name}</h3>
+                            <BrandButtons phoneBrand={category[0].brands}
                                  setBrand={setBrand} brand={brand}/>
                             
                     </div>
                     {        
-
-                        phoneCategory[0].brands[brand].products.length > 0 ? 
                         <BrandCard
-                        products={phoneCategory[0].brands[brand].products}/>:
-                        <EmptyItem message="No Products for this brand" 
-                        styles=" text-xl text-center text-[#BB0000]   font-['Lato',sans-serif] my-24 "/>
+                        category={category[0]} brand={brand}/>
+                        // products={category[0].brands[brand].products}/>
+
+                       
                         
                      }
             </div>

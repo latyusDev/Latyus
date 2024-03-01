@@ -21,13 +21,13 @@ const Television = ()=>{
         getHomeProducts()
     },[])
 
-    const phoneCategory = categoryByName('television',homeItems)
+    const category = categoryByName('televisions',homeItems)
     return (
         <section className="px-3">  
           
           {
-           phoneCategory.length >0&& phoneCategory[0].brands.length>0?
-            <Brand phoneCategory={phoneCategory} />
+           category.length >0&& category[0].brands.length>0?
+            <Brand category={category} />
              :<div className="mx-auto mt-[19rem] w-[max-content]">
             <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
             width:"300px" ,height:"300px"}} />

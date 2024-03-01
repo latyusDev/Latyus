@@ -31,7 +31,6 @@ const Home = ()=>{
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]" >Free delivery within Lagos</p>
                     </div>
                 </div>
-
                 <div className="flex gap-4 items-center">
                 <MdPayment className="text-[#BB0000] text-[3.5rem]"/>
 
@@ -81,7 +80,6 @@ const Home = ()=>{
                        <Heading text="electronics" styles=" text-[#BB0000] mt-[6rem] mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
                         text-center uppercase text-6xl capitalize"/>
                     <Television/>
-                    <Iron/>
 
                        <NewArrival/>
            </div>

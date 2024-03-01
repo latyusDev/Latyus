@@ -40,7 +40,8 @@ const Category = ()=>{
     const singleCategory =  categories.filter(category=>category.name == name)
     if(singleCategory.length === 0){
         return (
-            <EmptyItem message="Category does not exist"/>
+            <EmptyItem message="Category does not exist"
+            />
         )
     }
     
@@ -58,7 +59,8 @@ const Category = ()=>{
            singleCategory[0].brands[brand].products.map(product=>{
               return <CategoryCard product={product} key={product.id}/>
            }):
-           <EmptyItem message="No Product for this brand"/>
+           <EmptyItem message="No Products for this brand"
+           styles=" text-xl text-center text-[#BB0000]   font-['Lato',sans-serif] my-24 "/>
         }
         </div>
         </section>

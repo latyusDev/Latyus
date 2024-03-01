@@ -18,15 +18,15 @@ const Phone = ()=>{
     useEffect(()=>{
         getHomeProducts()
     },[])
-
-    const phoneCategory = categoryByName('phone',homeItems)
+    console.log(homeItems)
+    const category = categoryByName('Phones',homeItems)
    
     return (
         <section className="px-3"> 
       
         {
-           phoneCategory.length >0?
-            <Brand phoneCategory={phoneCategory} />
+           category.length >0?
+            <Brand category={category} />
              :<div className="mx-auto mt-[19rem] w-[max-content]">
             <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
             width:"300px" ,height:"300px"}} />

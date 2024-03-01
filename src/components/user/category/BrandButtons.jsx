@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const BrandButton = ({singleCategory,brand,setBrand})=>{
     return <div className="flex gap-6">
 

@@ -18,7 +18,6 @@ const Phone = ()=>{
     useEffect(()=>{
         getHomeProducts()
     },[])
-    console.log(homeItems)
     const category = categoryByName('Phones',homeItems)
    
     return (

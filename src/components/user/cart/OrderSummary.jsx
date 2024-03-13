@@ -36,7 +36,11 @@ const OrderSummary = ()=>{
                 </div>
                </div>
                 </div>
-            <button onClick={checkoutCart} className="mt-2 bg-[#880000] rounded-b-lg py-3 text-lg font-[600] w-full text-white">Checkout</button>
+            <button onClick={checkoutCart} className="transition-all duration-1000 mt-2 bg-[#880000] border-[2px] border-[#880000] rounded-b-lg py-2.5 text-lg font-[600]
+            hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000]
+            w-full text-white
+            
+            ">Checkout</button>
 
             </div>
     )

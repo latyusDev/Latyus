@@ -6,7 +6,7 @@ const Address = ()=>{
     const address = user.address
 
     return (
-            <div className="bg-gradient-to-l  to-[#BB0000]  from-[#880000] basis-[55%] rounded-lg p-8 self-center">
+            <div className="bg-gradient-to-l w-full md:w-auto to-[#BB0000]  from-[#880000] md:basis-[55%] rounded-lg p-8 self-center">
 
                 <h1 className="text-center text-xl text-white capitalize mt-9 font-[600] ">address</h1>
             <ul className="mt-7 text-white font-['Lato',sans-serif] ">

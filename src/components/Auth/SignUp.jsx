@@ -26,9 +26,11 @@ const SignUp = ()=>{
     }
     const getImage = (e)=>{
         const fileReader = new FileReader();
-        fileReader.readAsDataURL(e.target.files[0])
-        fileReader.onload = function(e){
-            setImage(e.target.result)
+        if(e.target.files[0]){
+            fileReader.readAsDataURL(e.target.files[0])
+            fileReader.onload = function(e){
+                setImage(e.target.result)
+        }
         }
     }
     
@@ -41,13 +43,13 @@ if(signInStatus === 'pending'){
 
 } 
     return (
-        <section className="pb-36 border border-[#FCFCFC] bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
+        <section className="px-3 pb-36 border border-[#FCFCFC] bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
            
             <h1 className="text-center text-[#BB0000]  text-[4rem] font-['Rubik_Doodle_Triangles',system-ui] font-[400]">Sign up</h1>
             <form onSubmit={handleSubmit}>
-            <div  className="max-w-[1000px]  mx-auto mt-[4rem]">
+            <div  className="max-w-[1000px]  mx-auto mt-3 md:mt-[4rem]">
 
-           <div className="flex justify-between gap-7" >
+           <div className="flex flex-col md:flex-row justify-between gap-7" >
            <div className="basis-[47%]">
 
                 <div className="mt-7 ">

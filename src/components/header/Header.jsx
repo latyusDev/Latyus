@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import TopHeader from "./TopHeader";
 import MiddleHeader from "./MiddleHeader";
-import BottomHeader from "./BottomHeader";
+import BottomHeader from "./bottomHeader/BottomHeader";
 
 const Header = ()=>{
     const header = useRef(null)
@@ -10,7 +10,6 @@ const Header = ()=>{
     window.onscroll = ()=>{
         setPageY(window.pageYOffset+headerHeight)
         setHeaderHeight(header.current.getBoundingClientRect().height)
-        // console.log(header.current.getBoundingClientRect().height)
       
     }
     return (

@@ -28,11 +28,11 @@ const NewArrival = ()=>{
         <section className="mb-36">
             {
                 newArrival.length>0 ? <div>
-                <Heading text="new arrivals" styles=" text-[#BB0000] mt-[6rem] mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
-                text-center uppercase text-6xl capitalize"/>
+                <Heading text="new arrivals" styles=" text-[#BB0000] mt-[6rem] mb-6 md:mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
+                text-center uppercase text-4xl md:text-6xl capitalize"/>
 
-                <div className="flex justify-between mt-4 px-6">
-                <h3 className=" text-[#BB0000]  font-['Lato',sans-serif]  text-3xl capitalize">categories</h3>
+                <div className="flex flex-col md:flex-row text-center md:text-left items-center justify-between mt-4 px-6">
+                <h3 className=" text-[#BB0000] mb-4 md:mb-0 font-['Lato',sans-serif]  text-3xl capitalize">categories</h3>
                 <BrandButtons phoneBrand={newArrival}
                      setBrand={setBrand} brand={brand}/>
                     </div>

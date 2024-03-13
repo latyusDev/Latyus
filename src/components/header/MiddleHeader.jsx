@@ -9,8 +9,7 @@ import SearchInput from "../searchContainer/SearchInput";
 
 
 
-const MiddleHeader = ()=>{
-    const [isOpen, setIsOpen] = useState(false)
+const MiddleHeader = ({isOpen})=>{
     const cartAmount = useSelector(amount)
     const cartItems = useSelector(cartProducts)
     const dispatch = useDispatch()
@@ -18,9 +17,11 @@ const MiddleHeader = ()=>{
         dispatch(getTotal())
     },[cartItems])
     return (
-        <div className="flex justify-between  items-center py-2 px-6 border-y-[1px] border-[#D7504E]">
+        <div className="flex justify-between  items-center border-t-[1px]  md:py-2 px-3 md:px-6 border-[#D7504E] md:border-y-[1px] ">
             <Logo/>
-            <SearchInput isOpen={isOpen}/>
+            <div className="hidden md:block basis-[50%]">
+            <SearchInput/>
+            </div>
             <Link to='/cart'>
             <span className="text-5xl text-[#fff] relative">
                 <BsCart className="transition-all hover:text-[#FF9300]"/>

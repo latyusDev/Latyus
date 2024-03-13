@@ -17,10 +17,10 @@ const TopHeader = ({pageY,headerHeight})=>{
           }
     }
     return (
-            <div className={` py-3 font-['Lato',sans-serif] font-[600]  px-6  ${pageY>headerHeight&&"hidden"}`}>
+            <div className={` py-3 font-['Lato',sans-serif] font-[600] px-3 md:px-6  ${pageY>headerHeight&&"hidden"}`}>
             <ul className="mx-auto w-[max-content]  flex gap-8 capitalize font-['Lato',sans-serif] text-[#FAFFF7] text-[1rem]">
-                <li><Link to="/myAccount" className="transition-all hover:text-[#FF9300]">my account  <span className="ml-7">|</span> </Link></li>
-                <li><Link to="" className="transition-all hover:text-[#FF9300]">wish list   <span className="ml-7">|</span> </Link></li>
+                <li><Link to="/myAccount" className="transition-all hover:text-[#FF9300]">my account  <span className="md:ml-7">|</span> </Link></li>
+                <li><Link to="" className="transition-all hover:text-[#FF9300]">wish list   <span className="md:ml-7">|</span> </Link></li>
                {
                userToken ?<li className="cursor-pointer transition-all hover:text-[#FF9300]"
                 onClick={handleLogout}>sign out </li>:

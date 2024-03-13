@@ -12,18 +12,22 @@ import SearchContainer from './components/searchContainer/SearchContainer';
 import DropDown from './components/user/DropDown';
 import ProtectedRoute from './components/ProtectedRoute';
 import MyAccount from './pages/MyAccount';
-import Product from './pages/product';
+import Product from './pages/Product';
 import Footer from './components/footer/Footer';
 
 
 function App() {
-
+    const [openSidebar,setOpenSidebar] = useState(true)
   return (
       <BrowserRouter>
             <Header />
+            <Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
             <main>
             <SearchContainer/>
-            <DropDown/>
+            <div className='hidden md:block'>
+                <DropDown/>
+            </div>
+              
                 <Routes>
                 {/* <Route path='/dashboard' element={<Dashboard />} /> */}
                 <Route path='/' element={<Home />} />

@@ -46,14 +46,14 @@ const Category = ()=>{
     }
     
     return (
-        <section className="px-6 mb-36">  
+        <section className="px-3 md:px-6 mb-36">  
             <h1 className="text-center text-[4rem] capitalize text-[#BB0000] 
              mt-8 font-['Rubik_Doodle_Triangles',system-ui]">{name}</h1>
-            <div className="flex justify-between mt-7">
-                <h3 className="text-3xl">Select a brand</h3>
+            <div className="flex flex-col md:flex-row text-center md:text-left justify-between md:mt-7">
+                <h3 className="text-3xl mb-4 md:mb-0">Select a brand</h3>
                 <BrandButton  singleCategory={singleCategory} setBrand={setBrand} brand={brand}/>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 mt-[3rem]">
+            <div className="flex flex-wrap  justify-center gap-6 mt-[2rem]">
            {
            singleCategory[0].brands[brand].products.length > 0 ?
            singleCategory[0].brands[brand].products.map(product=>{

@@ -34,18 +34,18 @@ const DynamicCarousel = ()=>{
     }
 
     return(
-        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 h-[600px] w-full relaive -z-20">
+        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 min-h-[550px] w-full relaive -z-20">
              <Slider {...settings}>
                 {
                     dynamicProducts.map((product,index)=>{
                         const {name,description,image,id} = product
                         return (
                             <div className='mb-8' key={id}>
-                            <div className={`flex justify-center gap-10 items-center  ${index%2===0&&"flex-row-reverse"}`}>
-                                       <div className="basis-[40%] text-white font-['Lato',sans-serif]">
+                            <div className={`flex flex-col-reverse md:flex-row justify-center gap-10 items-center  ${index%2===0&&"flex-row-reverse"}`}>
+                                       <div className="basis-[40%] text-white text-center md:text-left font-['Lato',sans-serif]">
                                           
                                            <h1 className=" text-3xl mb-4 capitalize">{name}</h1>
-                                           <p className="">{description.slice(0,200)}<Link to={`product/${product.id}`}> <span className="transition-all duration-1000  capitalize text-[#FF9300] 
+                                           <p className="">{description.slice(0,100)}<Link to={`product/${product.id}`}> <span className="transition-all duration-1000  capitalize text-[#FF9300] 
                                                hover:cursor-pointer hover:text-white  hover:border-white">
                                                 learn more</span></Link> </p>
                                                 <AddToCart product={product} styles="transition-all duration-1000  capitalize mt-4 px-6 py-2
@@ -54,7 +54,7 @@ const DynamicCarousel = ()=>{
 
                                        </div>
                                        <div className="basis-[40%] ">
-                                       <img src={image} alt="" className="w-full h-[400px] object-containh" />
+                                       <img src={image} alt="" className="w-full h-[200px] md:h-[400px] object-containh" />
                                        </div>
                                    </div>
                             </div>

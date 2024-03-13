@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
 import axiosClient from "../../api/axios";
 
 const initialState = {
@@ -77,10 +75,7 @@ const productSlice = createSlice({
                                  
             })
             state.filteredProducts = filteredProducts
-        },
-        // getSingleProduct:(state,action)=>{
-        //     const singleProduct = state.products
-        // }
+        }
     },
     extraReducers(builder){
         
@@ -112,7 +107,6 @@ const productSlice = createSlice({
             })
             .addCase(getNewProducts.fulfilled, (state,action)=>{
                 state.newProducts = action.payload
-                // state.status = 'success'
             })
             .addCase(getNewProducts.pending, (state)=>{
                 state.status = 'pending'

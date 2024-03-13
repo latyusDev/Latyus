@@ -28,13 +28,13 @@ const SearchInput = ()=>{
 
 
     return ( 
-        <div className="basis-[50%]">
-        <form className="flex font-['Lato',sans-serif] ">
+        <div className="w-full">
+        <form className="flex font-['Lato',sans-serif]  ">
             <input type="text" value={value}
              onChange={(e)=>dispatch(setValue(e.target.value))}
              onKeyUp={handleKeyUp}
-               className=" pl-4 basis-[80%] h-[50px] rounded-l-[3rem] outline-[0]" placeholder="Search the entire store"/>
-            <button type="submit" className="bg-[#880000] text-lg rounded-r-[2rem] basis-[20%]  text-white">Search</button>
+               className=" pl-4 basis-[70%] md:basis-[80%] h-[50px] rounded-l-[3rem] outline-[0]" placeholder="Search the entire store"/>
+            <button type="submit" className="bg-[#880000] text-lg px-5 rounded-r-[2rem] basis-[30%] md:basis-[20%]  text-white">Search</button>
         </form>
     </div>
     )

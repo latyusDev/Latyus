@@ -28,16 +28,16 @@ const SignIn = ()=>{
 
     }
     if(signInStatus === 'pending'){
-        return <div className="mx-auto mt-[19rem] w-[max-content]">
+        return <div className="mx-auto my-[5rem] w-[max-content]">
         <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
         width:"300px" ,height:"300px"}} />
    </div>
     }
     
     return (
-        <section className=" border [#FCFCFC] pb-36 bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
+        <section className="px-3 border [#FCFCFC] md:pb-36 bg-[#FCFCFC] py-28 md:pt-[5rem] font-['Lato',sans-serif] font-[600]">
             <h1 className="text-center text-[#BB0000]  text-[4rem] font-['Rubik_Doodle_Triangles',system-ui] font-[400]">Sign in</h1>
-            <form onSubmit={handleSignIn} className="max-w-[500px] mx-auto  mt-[4rem]">
+            <form onSubmit={handleSignIn} className="max-w-[500px] mx-auto  md:mt-[4rem]">
               
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Email</label>

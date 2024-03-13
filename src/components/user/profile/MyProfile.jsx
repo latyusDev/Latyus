@@ -15,8 +15,8 @@ const MyProfile = ()=>{
         width:"300px" ,height:"300px"}} />
    </div>
     }
-    return <section className="py-36">
-        <div className="flex  justify-between max-w-[1000px] mx-auto">
+    return <section className="py-36 px-3">
+        <div className="flex flex-col md:flex-row  gap-8 md:gap-0 justify-between max-w-[1000px] mx-auto">
           <PersonalDetails/>
           <Address/>
         </div>

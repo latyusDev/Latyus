@@ -18,53 +18,50 @@ import Iron from "../components/user/brand/Iron";
 const Home = ()=>{
     return (
         <section className="  ">
-            
-            
             <DynamicCarousel/>
-
-            <div className="flex justify-between gajp-4 mt-5 border-b-[3px] border-[#BB0000] p-6">
-                <div className="flex gap-4 items-center">
-                <CiDeliveryTruck className="text-[#BB0000] text-[3.5rem]"/>
-                 <div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-0 mt-5 md:border-b-[3px] border-[#BB0000] p-2 md:p-6">
+                <div className=" text-center md:text-left md:flex gap-4 items-center">
+                <CiDeliveryTruck className="text-[#BB0000] text-[3.5rem] mx-auto md:mx-0"/>
+                 <div >
                     
                      <h1  className="text-[0.94rem] text-[#BB0000] font-['Lato',sans-serif] font-[600]">Free Delivery</h1>
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]" >Free delivery within Lagos</p>
                     </div>
                 </div>
-                <div className="flex gap-4 items-center">
-                <MdPayment className="text-[#BB0000] text-[3.5rem]"/>
+                <div className=" text-center md:text-left md:flex gap-4 items-center">
+                <MdPayment className="text-[#BB0000] text-[3.5rem] mx-auto md:mx-0"/>
 
-                 <div>
+                 <div >
                     
                      <h1 className="text-[0.94rem] text-[#BB0000] font-['Lato',sans-serif] font-[600]">Safe Payment</h1>
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]">100% secure payment</p>
                     </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                <FaShopify className="text-[#BB0000] text-[3.5rem]"/>
+                <div className=" text-center md:text-left md:flex gap-4 items-center">
+                <FaShopify className="text-[#BB0000] text-[3.5rem] mx-auto md:mx-0"/>
 
-                 <div>
+                 <div >
                     
                      <h1 className="text-[0.94rem] text-[#BB0000] font-['Lato',sans-serif] font-[600]">Shop With Confidence</h1>
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]">Buy now pay later</p>
                     </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                <LuHelpingHand className="text-[#BB0000] text-[3.5rem]"/>
+                <div className=" text-center md:text-left md:flex gap-4 items-center">
+                <LuHelpingHand className="text-[#BB0000] text-[3.5rem] mx-auto md:mx-0"/>
 
-                 <div>
+                 <div >
                     
                      <h1 className="text-[0.94rem] text-[#BB0000] font-['Lato',sans-serif] font-[600]">24/7 Help Center</h1>
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]">Dedicated online and offline support</p>
                     </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                <GiThreeFriends className="text-[#BB0000] text-[3.5rem]"/>
+                <div className=" text-center md:text-left md:flex gap-4 items-center">
+                <GiThreeFriends className="text-[#BB0000] text-[3.5rem] mx-auto md:mx-0"/>
 
-                 <div>
+                 <div >
                     
                      <h1 className="text-[0.94rem] text-[#BB0000] font-['Lato',sans-serif] font-[600]">Friendly Services</h1>
                 <p className="text-[0.85rem]  mt- font-['Lato',sans-serif] font-[500]">
@@ -78,7 +75,7 @@ const Home = ()=>{
                        <Phone/>
                        <Laptop/>
                        <Heading text="electronics" styles=" text-[#BB0000] mt-[6rem] mb-9  font-[400]  font-['Rubik_Doodle_Triangles',system-ui]
-                        text-center uppercase text-6xl capitalize"/>
+                        text-center uppercase text-4xl md:text-6xl capitalize"/>
                     <Television/>
 
                        <NewArrival/>

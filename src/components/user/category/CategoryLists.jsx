@@ -12,8 +12,7 @@ const CategoryLists = ({categories,ulStyles,liStyles,linkHeight})=>{
 
     return(
         <ul ref={linkHeight} className={ulStyles}>
-            <li>Iron</li>
-            <li>Iron</li>
+        
         {categories.filter(category=>category.brands.length>0).map(category=>{
             return (
                 <li key={category.id} onClick={handleBars}  

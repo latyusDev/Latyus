@@ -9,14 +9,14 @@ import { Circles } from "react-loader-spinner";
 const SignUp = ()=>{
     const [image,setImage] = useState(avatar);
     const dispatch = useDispatch();
-    const {errors,status} = useSelector((state)=>state.user)
+    const {signUpErrors,status} = useSelector((state)=>state.user)
     const navigate = useNavigate();
     useEffect(()=>{
         if(status === 'success'){
             navigate('/')
         }
     
-    },[status,errors])
+    },[status,signUpErrors])
 
 const handleSubmit = async(e)=>{
     e.preventDefault();
@@ -50,24 +50,24 @@ const handleSubmit = async(e)=>{
                         <img src={image} alt="" className="cursor-pointer block mx-auto w-[240px] h-[220px] rounded-[50%]" /></label>
                     <input onChange={(e)=>getImage(e)} className=" px-3.5 outline-none w-full hidden border-[#ccc] border rounded-md h-[45px]" type="file" name="image" id="image" />
                     <label className="block my-2.5 mb-2 mt-4  text-lg text-[#880000]  text-center"> Upload your image</label>
-                    <p className="text-sm  text-red-500 text-center">{errors?.image&&errors.image[0]}</p>
+                    <p className="text-sm  text-red-500 text-center">{signUpErrors?.image&&signUpErrors.image[0]}</p>
                 </div>
                 
                 <div>
                     <label className="block  mb-2 mt-4  text-lg text-[#880000]">First Name</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.first_name&&errors.first_name[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.first_name&&signUpErrors.first_name[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="first_name"   />
                 </div>
         
                 <div>
                     <label className="block   mb-2 mt-4  text-lg text-[#880000]">Last Name</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.last_name&&errors.last_name[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.last_name&&signUpErrors.last_name[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="last_name"/>
                 </div>
         
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Email</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.email&&errors.email[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.email&&signUpErrors.email[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="email" name="email"  />
                 </div>
         
@@ -77,36 +77,36 @@ const handleSubmit = async(e)=>{
                     <div  className="basis-[47%]">
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Password</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.password&&errors.password[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.password&&signUpErrors.password[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="password" name="password"  />
                 </div>
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Password Confirmation</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.password&&errors.password[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.password&&signUpErrors.password[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="password" name="password_confirmation"
            />
                 </div>
                     <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Phone Number</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.phone_number&&errors.phone_number[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.phone_number&&signUpErrors.phone_number[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="tel" name="phone_number"  />
                 </div>
                 
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">State</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.state&&errors.state[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.state&&signUpErrors.state[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="state" />
                 </div>
         
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Local Government</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.local_government&&errors.local_government[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.local_government&&signUpErrors.local_government[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="local_government"  />
                 </div>
 
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Street</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.street&&errors.street[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signUpErrors?.street&&signUpErrors.street[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="street"  />
                 </div>
 

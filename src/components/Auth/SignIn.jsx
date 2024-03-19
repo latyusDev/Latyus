@@ -5,7 +5,7 @@ import { signIn,reset } from "../../features/user/authSlice";
 
 const SignIn = ()=>{
     const [user,setUser] = useState({email:'',password:''});                
-    const {errors,status} = useSelector((state)=>state.user)
+    const {signInErrors,status} = useSelector((state)=>state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const handleChange = (e)=>{
@@ -19,7 +19,7 @@ const SignIn = ()=>{
         if(status === 'success'){
             navigate('/')
         }
-    },[status,errors])
+    },[status,signInErrors])
 
     const handleSignIn = async(e)=>{
         e.preventDefault();
@@ -36,15 +36,15 @@ const SignIn = ()=>{
               
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Email</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.email&&errors.email[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signInErrors?.email&&signInErrors.email[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]"
                      onChange={handleChange} value={user.email} type="email" name="email"  />
                 </div>
 
-                    <p className="text-sm  text-red-500 mt-4">{errors?.message&&errors.message}</p>
+                    <p className="text-sm  text-red-500 mt-4">{signInErrors?.message&&signInErrors.message}</p>
                <div>
                     <label className="block   mb-2 mt-4  text-lg text-[#880000]">Password</label>
-                    <p className="text-sm  text-red-500 pb-2">{errors?.password&&errors.password[0]}</p>
+                    <p className="text-sm  text-red-500 pb-2">{signInErrors?.password&&signInErrors.password[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]"
                      onChange={handleChange} value={user.password} type="password" name="password"/>
 

@@ -7,7 +7,8 @@ const ACCESS_TOKEN = Cookies.get('ACCESS_TOKEN');
 const initialState = {
     user:user?JSON.parse(user):null,
     token:ACCESS_TOKEN?ACCESS_TOKEN:null,
-    errors:{},
+    signInErrors:{},
+    signUpErrors:{},
     status:'idle',
 }
 
@@ -69,7 +70,7 @@ const authSlice = createSlice({
                     })
                     .addCase(signUp.rejected,(state,action)=>{
                         state.status = 'rejected';
-                        state.errors = action.payload
+                        state.signUpErrors = action.payload
                         state.user = null;
                         state.token = null;
                     })
@@ -83,7 +84,7 @@ const authSlice = createSlice({
                     })
                     .addCase(signIn.rejected,(state,action)=>{
                         state.status = 'rejected';
-                        state.errors = action.payload
+                        state.signInErrors = action.payload
                         state.user = null;
                         state.token = null;
                     })

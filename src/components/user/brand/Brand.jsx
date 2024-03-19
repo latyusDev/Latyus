@@ -5,7 +5,7 @@ import BrandButtons from './BrandButtons'
 const Brand = ({category})=>{
     const [brand,setBrand] = useState(0);
     return (
-        <section className="px md:px-3j">  
+        <section className="">  
 
           
           {

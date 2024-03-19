@@ -1,41 +1,14 @@
 import NextArrow from '../components/user/brand/NextArrow'
 import PrevArrow from '../components/user/brand/PrevArrow'
 
-const navLinks = [
-  {
-    id:1,
-    name:'Home',
-    route:''
-  },
-  {
-    id:2,
-    name:'Contact',
-    route:'/Contact'
-  },
-  {
-    id:3,
-    name:'About us',
-    route:'/About'
-  },
-]
-
-const homeData = [
-  'phone',
-  'accessory',
-    'laptop'
-  ]
-  const settings = {
-    nextArrow:<NextArrow />,
-    prevArrow:<PrevArrow/>,
+export  const settings = {
+    nextArrow:<NextArrow color="#BB0000" height="20px" top="16px" left="-40px"  />,
+    prevArrow:<PrevArrow color="#BB0000" height="20px"  top="16px" left="-31px" />,
     infinite: true,
-    dots:true,
     speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow:4,
+    slidesToScroll: 4,
     initialSlide: 0,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    cssEase: "linear"
   // responsive: [
   //   {
   //     breakpoint: 1024,
@@ -43,7 +16,7 @@ const homeData = [
   //       slidesToShow: 3,
   //       slidesToScroll: 3,
   //       infinite: true,
-  //       dots: true
+  //       dots: false
   //     }
   //   },
   //   {
@@ -57,11 +30,9 @@ const homeData = [
   //   {
   //     breakpoint: 480,
   //     settings: {
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1
+  //       slidesToShow: 2,
+  //       slidesToScroll: 2
   //     }
   //   }
   // ],
 };
-
-export {settings,homeData,navLinks}

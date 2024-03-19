@@ -1,29 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from '../../assets/images/avatar.jpg'
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp,status } from "../../features/user/authSlice";
+import { signUp,reset } from "../../features/user/authSlice";
 import Loader from "../Loader";
 import { Circles } from "react-loader-spinner";
 
 const SignUp = ()=>{
     const [image,setImage] = useState(avatar);
     const dispatch = useDispatch();
-    const signInStatus = useSelector(status)
+    const {errors,status} = useSelector((state)=>state.user)
     const navigate = useNavigate();
-    const handleSubmit = async(e)=>{
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-
-        try{
-            await dispatch(signUp(form)).unwrap();
+    useEffect(()=>{
+        if(status === 'success'){
             navigate('/')
-        }catch(e){
-            if(e)
-            console.log(e)
         }
+    
+    },[status,errors])
 
+const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    await dispatch(signUp(form)).unwrap();
+    dispatch(reset())
     }
+   
     const getImage = (e)=>{
         const fileReader = new FileReader();
         if(e.target.files[0]){
@@ -34,14 +35,6 @@ const SignUp = ()=>{
         }
     }
     
-
-if(signInStatus === 'pending'){
-    return <div className="mx-auto mt-[19rem] w-[max-content]">
-    <Loader Circles={Circles} styles={{color:"#880000", radius:"8px",
-    width:"300px" ,height:"300px"}} />
-</div>
-
-} 
     return (
         <section className="px-3 pb-36 border border-[#FCFCFC] bg-[#FCFCFC] pt-[5rem] font-['Lato',sans-serif] font-[600]">
            
@@ -57,21 +50,24 @@ if(signInStatus === 'pending'){
                         <img src={image} alt="" className="cursor-pointer block mx-auto w-[240px] h-[220px] rounded-[50%]" /></label>
                     <input onChange={(e)=>getImage(e)} className=" px-3.5 outline-none w-full hidden border-[#ccc] border rounded-md h-[45px]" type="file" name="image" id="image" />
                     <label className="block my-2.5 mb-2 mt-4  text-lg text-[#880000]  text-center"> Upload your image</label>
-                
+                    <p className="text-sm  text-red-500 text-center">{errors?.image&&errors.image[0]}</p>
                 </div>
                 
                 <div>
                     <label className="block  mb-2 mt-4  text-lg text-[#880000]">First Name</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.first_name&&errors.first_name[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="first_name"   />
                 </div>
         
                 <div>
                     <label className="block   mb-2 mt-4  text-lg text-[#880000]">Last Name</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.last_name&&errors.last_name[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="last_name"/>
                 </div>
         
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Email</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.email&&errors.email[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="email" name="email"  />
                 </div>
         
@@ -81,30 +77,36 @@ if(signInStatus === 'pending'){
                     <div  className="basis-[47%]">
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Password</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.password&&errors.password[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="password" name="password"  />
                 </div>
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Password Confirmation</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.password&&errors.password[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="password" name="password_confirmation"
            />
                 </div>
                     <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Phone Number</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.phone_number&&errors.phone_number[0]}</p>
                     <input className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="tel" name="phone_number"  />
                 </div>
                 
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">State</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.state&&errors.state[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="state" />
                 </div>
         
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Local Government</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.local_government&&errors.local_government[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="local_government"  />
                 </div>
 
                 <div>
                     <label className="block my-2 mb-2 mt-4  text-lg text-[#880000]">Street</label>
+                    <p className="text-sm  text-red-500 pb-2">{errors?.street&&errors.street[0]}</p>
                     <input  className="px-3.5 outline-none w-full border-[#ccc] border rounded-md h-[45px]" type="text" name="street"  />
                 </div>
 

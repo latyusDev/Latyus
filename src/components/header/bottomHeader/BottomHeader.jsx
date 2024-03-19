@@ -2,20 +2,22 @@ import React from "react";
 import { BiMenu } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setOpenDropDown } from "../../../features/appState/appStateSlice";
+import { setOpenDropDown, setOpenSidebar } from "../../../features/appState/appStateSlice";
 import {CiCircleRemove} from 'react-icons/ci';
 import { status,allCategories } from "../../../features/category/categorySlice";
 import { Circles } from "react-loader-spinner";
 import Loader from "../../Loader";
-import DropDown from "../../user/DropDown";
 import SearchInput from "../../searchContainer/SearchInput";
 import NavLinks from "./NavLinks";
 
 const BottomHeader = ({pageY,headerHeight})=>{
     const dispatch = useDispatch();
-    const openDropDown = useSelector((state)=>state.normalState.openDropDown);
+const {openDropDown} = useSelector((state)=>state.normalState);
     const categoryStatus = useSelector(allCategories);
-
+    const handleBars = ()=>{
+            dispatch(setOpenDropDown())
+            dispatch(setOpenSidebar()) 
+    }
     return (
 
         <nav>
@@ -29,10 +31,10 @@ const BottomHeader = ({pageY,headerHeight})=>{
             </div>:
                 openDropDown ? 
                 <CiCircleRemove 
-                onClick={()=>dispatch(setOpenDropDown())}
+                onClick={handleBars}
                  className="text-white cursor-pointer text-4xl font-[900]"/>
                 :
-                <BiMenu onClick={()=>dispatch(setOpenDropDown())}
+                <BiMenu onClick={handleBars}
                 className="text-4xl cursor-pointer text-[#fff]"/>
                }
                 <h3 className="text-[#fff] font-[600] mt-1 hidden md:block">SHOP BY CATEGORIES</h3>
@@ -42,9 +44,9 @@ const BottomHeader = ({pageY,headerHeight})=>{
                <SearchInput />
                </div>
            <div className="hidden md:block">
-           <NavLinks
-              ulStyles="flex flex-row  gap-5  capitalize  text-[#FAFFF7] font-[600] text-[0.9rem]"
-              listyles="uppercase transition-all text-[#FF9300] hover:text-[#FF9300]"/>
+           <NavLinks 
+              ulStyles="flex flex-row  gap-5  capitalize  text-[#FAFFF7] font-[600] text-[1rem]"
+              listyles=" transition-all text-[#FF9300] hover:text-[#FF9300]"/>
            </div>
 
         </div>

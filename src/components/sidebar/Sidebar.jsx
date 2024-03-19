@@ -4,30 +4,37 @@ import NavLinks from "../header/bottomHeader/NavLinks";
 import SidebarHeader from "./SidebarHeader";
 import { MdArrowBackIos } from "react-icons/md";
 import { allCategories } from "../../features/category/categorySlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CategoryLists from "../user/category/CategoryLists";
 import { CiCircleRemove } from "react-icons/ci";
-const Sidebar = ({openSidebar,setOpenSidebar})=>{
+import { setOpenDropDown, setOpenSidebar } from "../../features/appState/appStateSlice";
+
+const Sidebar = ()=>{
    const linkHeight = useRef(null);
-   const [linkscontainer,setLinkscontainer] = useState(0);
+   const [linksContainer,setLinksContainer] = useState(0);
    const [openCategory,setOpenCategory] = useState(false);
+   const {openSidebar} = useSelector((state)=>state.normalState);
+   const dispatch = useDispatch();
    
    const categories = useSelector(allCategories);
+   
    const handleDropDown = ()=>{
       setOpenCategory(!openCategory);
       if(openCategory){
-         setLinkscontainer(linkHeight.current.getBoundingClientRect().height)
+         setLinksContainer(0)
       }else{
-         setLinkscontainer(0)
+         setLinksContainer(linkHeight.current.getBoundingClientRect().height)
       }
-      console.log(linkscontainer)
    }
+   console.log(linksContainer+8)
    const closeSidebar = ()=>{
-      setOpenSidebar(false)
+      dispatch(setOpenSidebar())
+      dispatch(setOpenDropDown()) 
+      
    }
     return(
        <aside className={`fixed  top-0 bottom-0 flex  overflow-x-hidden font-['Lato',sans-serif] font-[600]
-        transition-all duration-1000  ${openSidebar?'w-full':"w-0"} z-[999] bg-[#3c3c3c80] md:w-0`}>
+        transition-all duration-500  ${openSidebar?'w-full':"w-0"} z-[999] bg-[#3c3c3c80] md:w-0`}>
            
            <div className="bg-white h-full w-[80%]">
             <SidebarHeader/>
@@ -42,14 +49,15 @@ const Sidebar = ({openSidebar,setOpenSidebar})=>{
             <h2 className="  font-[600] ">Categories</h2>
             <MdArrowBackIos className={`text-lg rotate-[180deg] transition-all duration-1000 mt-[0.58rem] ${openCategory&&"rotate-[270deg] mt-0"}`}/>
             </div>
-            <ul ref={linkHeight} className={`pl-8 mt-5 overflow-y-hidden 
-             transition-all duration-1000 bg-[#880000]  ${openCategory?`h-[${linkHeight}px]`:"h-[0px]"} `}>
+            <div className={` pl-8 mt-5 overflow-y-hidden 
+              bg-[#880000]  h-[0px]  ${openCategory&&`h-[fit-content]`} transition-all duration-500 `}>
+              {/* bg-[#880000]  h-[0px] ${openCategory&&`h-[${linksContainer}px]`} transition-all duration-500`}> */}
                <CategoryLists
+                  linkHeight={linkHeight}
                   ulStyles=" pt-4 flex  gap-8 flex-col gap-y-4 gap-x-10 text-white pb-[1rem] px-5 font-['Lato',sans-serif] "
                   liStyles="capitalize w-[max-content] font-[600]   hover:text-[#FF9300] "
                   categories={categories}/>
-                 
-            </ul>
+            </div>
            </div>
            <CiCircleRemove onClick={closeSidebar} className="text-[#FF9300] cursor-pointer text-4xl font-[900]"/>
        </aside>

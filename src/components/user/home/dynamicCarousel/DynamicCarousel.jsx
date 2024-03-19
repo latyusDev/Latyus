@@ -34,7 +34,7 @@ const DynamicCarousel = ()=>{
     }
 
     return(
-        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 min-h-[550px] w-full relaive -z-20">
+        <section className="px-[3rem] bg-[#880000k] bg-gradient-to-l  to-[#BB0000]  from-[#880000] pt-12 min-h-[550px] pb-10 md:pb-0 w-full relaive -z-20">
              <Slider {...settings}>
                 {
                     dynamicProducts.map((product,index)=>{

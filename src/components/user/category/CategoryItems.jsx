@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { allCategories, getCategory } from "../../../features/category/categorySlice";
 import CategoryLists from "./CategoryLists";
 
-const CategoryItems = ()=>{
+const CategoryItems = ({linkHeight})=>{
     const categories = useSelector(allCategories)
     const dispatch = useDispatch();
     const fetchCategory = async()=>{
-
        try{
             dispatch(getCategory()).unwrap();
        }catch(e){
@@ -19,9 +18,10 @@ const CategoryItems = ()=>{
     },[])
 
         return (
-            <div className=" bg-gradient-to-l  from-[#BB0000]  to-[#880000] w-full">
+            <div  className=" bg-gradient-to-l  from-[#BB0000]  to-[#880000] w-full">
                <CategoryLists 
-               ulStyles=" pt-4 flex gap-8 flex-wrap gap-y-4 gap-x-10 text-[#707070] pb-[1rem] px-5 font-['Lato',sans-serif] "
+               linkHeight={linkHeight}
+               ulStyles=" pt-4 flex gap-8 flex-wrap gap-y-4 gap-x-10 text-white pb-[1rem] px-5 font-['Lato',sans-serif] "
                liStyles="capitalize transition-all duration-1000 font-[600] hover:text-[#FF9300] "
                categories={categories}/>
             </div>

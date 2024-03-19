@@ -113,7 +113,10 @@ const handleSubmit = async(e)=>{
                     </div>
            </div>
      
-    <button type="submit" className="bg-[#880000] w-full py-3 mt-8 rounded-md text-white border-[2px] border-[#880000] transition-all hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000]">Sign up</button>
+    <button type="submit" disabled={status==='pending'?true:false} 
+    className={`bg-[#880000] w-full py-3 mt-8 rounded-md text-white border-[2px] border-[#880000] transition-all 
+    hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000] ${status==='pending'&&"bg-[#923838] hover:bg-[#923238] "}`}>{status==='pending'? <span className="block mx-auto w-[max-content]"><Loader Circles={Circles} styles={{color:"white", radius:"8px",
+      width:"30",height:"30"}} /></span> : <span>Sign up</span> } </button>
     </div>
 
     </form>

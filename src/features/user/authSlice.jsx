@@ -29,7 +29,7 @@ export const signIn = createAsyncThunk('login',async(payload,thunkAPI)=>{
         const {data} = await axiosClient.post('/login',payload)
         Cookies.set('ACCESS_TOKEN',data.token)
         Cookies.set('user',JSON.stringify(data.user))
-      return data;
+        return data;
     }catch(e){
         if(e.response.status === 422){
             return thunkAPI.rejectWithValue(e.response.data.errors)
@@ -54,7 +54,8 @@ const authSlice = createSlice({
     initialState:initialState,
     reducers:{
         reset:(state)=>{
-            state.errors = {},
+            state.signInErrors = {},
+            state.signUpErrors = {},
             state.status = 'idle'
         }
     },

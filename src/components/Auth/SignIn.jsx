@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn,reset } from "../../features/user/authSlice";
+import Loader from "../Loader";
+import { Circles } from "react-loader-spinner";
 
 const SignIn = ()=>{
     const [user,setUser] = useState({email:'',password:''});                
@@ -49,8 +51,10 @@ const SignIn = ()=>{
                      onChange={handleChange} value={user.password} type="password" name="password"/>
 
                 </div>
-        
-                <button type="submit" className="bg-[#880000] w-full py-3 mt-8 rounded-md border-[2px] border-[#880000] text-white transition-all hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000]">Sign in</button>
+               
+                <button type="submit"   disabled={status==='pending'?true:false} className={`bg-[#880000] w-full py-3 mt-8 rounded-md border-[2px] border-[#880000] text-white transition-all
+                 hover:bg-white hover:text-[#880000] hover:border-[2px] hover:border-[#880000] ${status==='pending'&&"bg-[#923838] hover:bg-[#923238]"}`}>{status==='pending'? <span className="block mx-auto w-[max-content]"><Loader Circles={Circles} styles={{color:"white", radius:"8px",
+                 width:"30",height:"30"}} /></span> : <span>Sign in</span> } </button>
         </form>
     <p className="text-center my-6">Don't have an account <Link to="/register" className="text-[#880000]">Sign up</Link></p>     
         </section>

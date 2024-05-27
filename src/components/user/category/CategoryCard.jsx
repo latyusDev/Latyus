@@ -1,6 +1,4 @@
-import React, { useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../../features/cart/cartSlice";
+import React from "react";
 import AddToCart from "../AddToCart";
 import { Link } from "react-router-dom";
 

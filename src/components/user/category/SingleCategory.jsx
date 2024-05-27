@@ -9,13 +9,13 @@ import EmptyItem from "../EmptyItem";
 import { allCategories, getCategory } from "../../../features/category/categorySlice";
 
 
-const Category = ()=>{
+const SingleCategory = ()=>{
     const categories = useSelector(allCategories)
-
     const [brand, setBrand] = useState(0)
     const dispatch = useDispatch()
     const {name} = useParams();
-
+    
+    const singleCategory =  categories.filter(category=>category.name == name);
     const fetchCategory = async()=>{
     try{
             dispatch(getCategory()).unwrap();
@@ -38,12 +38,12 @@ const Category = ()=>{
         )
     }
 
-    const singleCategory =  categories.filter(category=>category.name == name);
-    console.log(singleCategory)
-    if(singleCategory == undefined){
+    if(singleCategory.length == 0){
         return (
-            <EmptyItem message="Category does not exist"
-            />
+            <div className="min-h-[470px] md:min-h-[670px] flex items-center justify-center">
+                <EmptyItem message="Category does not exist"
+                 styles=" text-[#BB0000] text-center font-[600] text-lg md:text-4xl font-['Lato',sans-serif]"/>
+            </div>
         )
     }
     
@@ -69,4 +69,4 @@ const Category = ()=>{
     )
 }
 
-export default Category;
+export default SingleCategory;

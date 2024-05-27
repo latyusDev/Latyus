@@ -2,9 +2,8 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import Slider from "react-slick/lib/slider"
 import { settings } from "../../../static/staticCarouselSetting"
-import "./slick.css"; 
-import "./slick-theme.css";
-import { addToCart } from "../../../features/cart/cartSlice";
+// import '../slick.css'
+// import '../slick-theme.css'
 import AddToCart from "../AddToCart";
 import { Link } from "react-router-dom";
 

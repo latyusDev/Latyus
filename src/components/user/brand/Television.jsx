@@ -24,7 +24,6 @@ const Television = ()=>{
     const category = categoryByName('televisions',homeItems)
     return (
         <section className="px-3">  
-          
           {
            category.length >0&& category[0].brands.length>0?
             <Brand category={category} />

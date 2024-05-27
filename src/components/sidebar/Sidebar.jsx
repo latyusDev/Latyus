@@ -26,12 +26,12 @@ const Sidebar = ()=>{
          setLinksContainer(linkHeight.current.getBoundingClientRect().height)
       }
    }
-   console.log(linksContainer+8)
    const closeSidebar = ()=>{
       dispatch(setOpenSidebar())
       dispatch(setOpenDropDown()) 
       
    }
+   console.log(openSidebar)
     return(
        <aside className={`fixed  top-0 bottom-0 flex  overflow-x-hidden font-['Lato',sans-serif] font-[600]
         transition-all duration-500  ${openSidebar?'w-full':"w-0"} z-[999] bg-[#3c3c3c80] md:w-0`}>

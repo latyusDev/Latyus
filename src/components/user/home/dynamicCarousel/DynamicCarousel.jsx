@@ -1,11 +1,10 @@
 import Slider from 'react-slick/lib/slider';
-import './slick-theme.css';
-import './slick.css';
+import '../../slick-theme.css';
+import '../../slick.css';
 import { settings } from '../../../../static/dynamicCarouselSetting';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRandomProducts, randomProducts } from '../../../../features/product/productSlice';
 import { useEffect, useState } from 'react';
-import { addToCart } from '../../../../features/cart/cartSlice';
 import AddToCart from '../../AddToCart';
 import { Circles } from 'react-loader-spinner';
 import Loader from '../../../../components/Loader'

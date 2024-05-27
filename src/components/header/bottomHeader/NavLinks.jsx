@@ -4,7 +4,7 @@ import { navLinks } from "../../../static/static";
 import { useDispatch } from "react-redux";
 import { setOpenDropDown, setOpenSidebar } from "../../../features/appState/appStateSlice";
 
-const NavLinks = ({ulStyles,liStyles,linkHeight})=>{
+const NavLinks = ({ulStyles,linkHeight})=>{
     const dispatch = useDispatch()
     const handleBars = ()=>{
         dispatch(setOpenSidebar())
@@ -15,9 +15,9 @@ const NavLinks = ({ulStyles,liStyles,linkHeight})=>{
             <ul ref={linkHeight} className={ulStyles}>
                 {
                     navLinks.map(navLink=>{
-                        const {name,route} = navLink
+                        const {name,route,id} = navLink
                         return (
-                            <li key={navLink.id} onClick={()=>handleBars()} ><Link to={`${route}`} className={liStyles}>{name}</Link></li>
+                            <li key={id} onClick={handleBars} ><Link  to={`${route}`} className=" transition-all  hover:text-[#FF9300]">{name}</Link></li>
                         )
                     })
                 }

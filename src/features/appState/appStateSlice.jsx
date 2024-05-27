@@ -22,6 +22,7 @@ const normalStateSlice = createSlice({
         },
         setOpenDropDown:(state,action)=>{
             state.openDropDown = action.payload!==undefined?action.payload:!state.openDropDown
+            console.log(action.payload)
         }
     }
 })

@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import Header from './components/header/Header';
-import Category from './components/user/category/Category';
+import Category from './components/user/category/SingleCategory';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
-import Cart from './components/user/cart/Cart';
 import Home from './pages/Home';
 // import Dashboard from './components/admin/Dashboard';
 import Sidebar from './components/sidebar/Sidebar';
@@ -14,6 +12,10 @@ import ProtectedRoute from './components/ProtectedRoute';
 import MyAccount from './pages/MyAccount';
 import Product from './pages/Product';
 import Footer from './components/footer/Footer';
+import ShoppingCart from './pages/ShoppingCart';
+import NotFound from './pages/NotFound';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 
 function App() {
@@ -29,12 +31,15 @@ function App() {
             </div>
                 <Routes>
                 {/* <Route path='/dashboard' element={<Dashboard />} /> */}
-                <Route path='/' element={<Home />} />
                 <Route path='/register' element={<SignUp/>} />
                 <Route path='/login' element={<SignIn/>} />
-                <Route path='/cart' element={<Cart/>} />
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/cart' element={<ShoppingCart/>} />
                 <Route path='/product/:id' element={<Product/>} />
                 <Route path='/category/:name' element={<Category/>} />
+                <Route path='*' element={<NotFound/>} />
 
                 {/* protected routes */}
                 <Route element={<ProtectedRoute/>}>

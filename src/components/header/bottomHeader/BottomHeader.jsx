@@ -46,7 +46,7 @@ const {openDropDown} = useSelector((state)=>state.normalState);
            <div className="hidden md:block">
            <NavLinks 
               ulStyles="flex flex-row  gap-5  capitalize  text-[#FAFFF7] font-[600] text-[1rem]"
-              listyles=" transition-all text-[#FF9300] hover:text-[#FF9300]"/>
+              />
            </div>
 
         </div>
